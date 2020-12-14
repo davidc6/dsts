@@ -1,5 +1,5 @@
 {
-  "name": "data-structures",
+  "name": "dsts",
   "version": "1.0.0",
   "description": "Common data structures written in TypeScript",
   "main": "dist/main.js",
