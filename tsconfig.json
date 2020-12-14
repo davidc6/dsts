@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es2019",
+    "lib": ["dom", "es2019", "es2020.promise", "es2020.bigint", "es2020.string"],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist"
+  },
+  "include": [
+    "main.ts",
+    "src/**/*"
+  ]
+}
