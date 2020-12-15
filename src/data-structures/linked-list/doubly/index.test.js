@@ -27,7 +27,7 @@ describe('DoublyLinkedList', () => {
       expect(linkedList.tail.prev instanceof ListNode).to.be.true
       expect(linkedList.tail.prev.value).to.equal(1)
     })
-    
+  
     it('deletes first node', () => {
       const linkedList = new DoublyLinkedList()
   
