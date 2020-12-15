@@ -183,6 +183,20 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.size).to.equal(0)
   })
   
+  it('removeFirst() - removes first item in the list', () => {
+    const linkedList = new DoublyLinkedList()
+    
+    const values = [1, 2]
+    
+    for (const value of values) {
+      const node = new ListNode(value)
+      linkedList.append(node)
+    }
+    
+    expect(linkedList.removeFirst().value).to.equal(1)
+    expect(linkedList.size).to.equal(1)
+  })
+  
   it('removeLast() - removes last item in the list', () => {
     const linkedList = new DoublyLinkedList()
     

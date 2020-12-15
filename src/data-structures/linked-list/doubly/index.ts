@@ -79,6 +79,32 @@ class DoublyLinkedList<T> {
 
     return this.head
   }
+
+  removeFirst(): ListNode<T> {
+    if (this.head) {
+      // more than one item in the list
+      if (this.head.next) {
+        const firstNode = this.head
+      
+        this.head = this.head.next
+        this.size--
+        
+        return firstNode
+      }
+      
+      // one item in the list
+      const firstNode = this.head
+      
+      this.head = null
+      this.tail = null
+      this.size = 0
+
+      return firstNode
+    }
+
+    // empty list
+    return new ListNode()
+  }
   
   removeLast(): ListNode<T> {
     // more than one node in the list
@@ -94,19 +120,19 @@ class DoublyLinkedList<T> {
 
     // the only node the list
     if (this.tail && this.tail.prev === null) {
-      const removedNode = this.tail
+      const lastNode = this.tail
 
       this.head = null
       this.tail = null
       this.size = 0
 
-      return removedNode
+      return lastNode
     }
 
     // empty list node
     return new ListNode()
   }
-
+  
   get(index: number): ListNode<T> | null {
     if (index > this.size) {
       return null
@@ -129,6 +155,10 @@ class DoublyLinkedList<T> {
     }
     
     return null
+  }
+  
+  getFirst(): ListNode<T> {
+    return this.head ? this.head : new ListNode()
   }
   
   getLast(): ListNode<T> {
