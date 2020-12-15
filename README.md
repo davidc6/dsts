@@ -4,9 +4,18 @@ Basic data structures implemented in TypeScript
 
 - [ ] Linked list
   - [x] Doubly
-- [ ] Stack
+- [x] Stack
 - [ ] Queue
 - [ ] Hash table
+
+JavaScript data structures
+
+- Object - `{}`
+- Array - `[]`
+- Map (ES6) - `new Map()`
+- WeakMap (ES6) - `new WeakMap()`
+- Set (ES6) - `new Set()`
+- WeakSet (ES6) - `new WeakSet()`
 
 ## References
 
