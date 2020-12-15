@@ -182,6 +182,34 @@ describe('DoublyLinkedList', () => {
     expect(linkedList.tail).to.be.null
     expect(linkedList.size).to.equal(0)
   })
+  
+  it('removeLast() - removes last item in the list', () => {
+    const linkedList = new DoublyLinkedList()
+    
+    const values = [1]
+    
+    for (const value of values) {
+      const node = new ListNode(value)
+      linkedList.append(node)
+    }
+    
+    expect(linkedList.removeLast().value).to.equal(1)
+    expect(linkedList.removeLast().value).to.equal(null)
+  })
+  
+  it('getLast() - gets last item in the list', () => {
+    const linkedList = new DoublyLinkedList()
+    
+    const values = [1]
+    
+    for (const value of values) {
+      const node = new ListNode(value)
+      linkedList.append(node)
+    }
+    
+    expect(linkedList.getLast().value).to.equal(1)
+    expect(linkedList.getLast().value).to.equal(1)
+  })
 
   it('iterates over the list', () => {
     const linkedList = new DoublyLinkedList()
