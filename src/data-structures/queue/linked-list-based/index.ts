@@ -1,5 +1,5 @@
-import { DoublyLinkedList } from '../linked-list/doubly'
-import { ListNode } from '../linked-list/list-node'
+import { DoublyLinkedList } from '../../linked-list/doubly'
+import { ListNode } from '../../linked-list/list-node'
 
 class QueueLinkedListBased<T> {
   private doublyLinkedList: DoublyLinkedList<T> = new DoublyLinkedList()
