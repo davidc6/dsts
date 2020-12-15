@@ -4,8 +4,10 @@ Basic data structures implemented in TypeScript
 
 - [ ] Linked list
   - [x] Doubly
-- [x] Stack
+- [ ] Stack
+  - [x] Using doubly linked list
 - [ ] Queue
+  - [x] Using doubly linked list
 - [ ] Hash table
 
 JavaScript data structures
