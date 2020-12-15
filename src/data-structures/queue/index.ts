@@ -17,6 +17,12 @@ class QueueLinkedListBased<T> {
     
     return node.value
   }
+  
+  peek(): T | null {
+    const node = this.doublyLinkedList.getFirst()
+
+    return node.value
+  }
 }
 
 export { QueueLinkedListBased }
