@@ -8,6 +8,15 @@ Basic data structures implemented in TypeScript
 - [ ] Queue
 - [ ] Hash table
 
+JavaScript data structures
+
+- Object - `{}`
+- Array - `[]`
+- Map (ES6) - `new Map()`
+- WeakMap (ES6) - `new WeakMap()`
+- Set (ES6) - `new Set()`
+- WeakSet (ES6) - `new WeakSet()`
+
 ## References
 
 * Nicholas C. Zakas - https://humanwhocodes.com/blog/tag/computer-science/

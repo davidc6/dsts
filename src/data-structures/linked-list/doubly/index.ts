@@ -12,6 +12,8 @@ class DoublyLinkedList<T> {
   }
 
   append(node: ListNode<T>): void {
+    if (!node) return
+    
     if (this.head === null || this.tail === null) {
       this.size++
       this.head = node
@@ -77,6 +79,33 @@ class DoublyLinkedList<T> {
 
     return this.head
   }
+  
+  removeLast(): ListNode<T> {
+    // more than one node in the list
+    if (this.tail && this.tail.prev !== null) {
+      const removedNode = this.tail
+
+      this.tail = this.tail.prev
+      this.tail.next = null
+      this.size--
+
+      return removedNode
+    }
+
+    // the only node the list
+    if (this.tail && this.tail.prev === null) {
+      const removedNode = this.tail
+
+      this.head = null
+      this.tail = null
+      this.size = 0
+
+      return removedNode
+    }
+
+    // empty list node
+    return new ListNode()
+  }
 
   get(index: number): ListNode<T> | null {
     if (index > this.size) {
@@ -100,6 +129,10 @@ class DoublyLinkedList<T> {
     }
     
     return null
+  }
+  
+  getLast(): ListNode<T> {
+    return this.tail ? this.tail : new ListNode()
   }
   
   clear(): void {
