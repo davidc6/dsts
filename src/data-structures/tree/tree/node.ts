@@ -28,11 +28,14 @@ class Node {
    * 
    * @param newNodeData
    */
-  attachChild(newNodeData: Data): Node {
-    const newNode = new Node(newNodeData)
-    newNode.parent = this
-    this.children.add(newNode)
-    return newNode
+  attachChild(node: Node): Node {
+    node.parent = this
+    this.children.add(node)
+    return node
+  }
+  
+  removeChild(node: Node): boolean {
+    return this.children.delete(node)
   }
 }
 

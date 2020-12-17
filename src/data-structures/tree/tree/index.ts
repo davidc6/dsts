@@ -1,41 +1,58 @@
-import { Node, Data } from "./node";
+import { Node } from "./node";
 import { isDeepStrictEqual } from "util"
 
 class Tree {
   private root: Node | null = null
   
-  constructor(data: string | null) {
-    this.root = new Node(data)
+  constructor(node: Node) {
+    this.root = node
   }
   
-  private traverse(root: Node, data: Data): Node | null | void {
+  private traverse(root: Node, nodeToFind: Node): Node | null {
     const currentNode = root
 
     if (currentNode.children.size === 0) {      
       return null
     }
     
-    if (isDeepStrictEqual(root.data, data)) {
+    if (isDeepStrictEqual(root.data, nodeToFind.data)) {
       return root
     }
 
     for (const child of currentNode.children) {     
-      if (isDeepStrictEqual(child.data.value, data)) {            
+      if (isDeepStrictEqual(child.data, nodeToFind.data)) {            
         return child
       }
 
-      return this.traverse(child, data)
+      return this.traverse(child, nodeToFind)
     }
     
     return null
   }
 
-  find(data: Data): Node | null | void {
+  find(node: Node): Node | null {
     if (this.root === null) {
       return null
     }
     
-    return this.traverse(this.root, data)
+    return this.traverse(this.root, node)
+  }
+  
+  remove(node: Node): Node | null {
+    if (this.root === null) {
+      return null
+    }
+    
+    const foundNode = this.find(node)
+        
+    if (foundNode !== null && foundNode.parent) {
+      if (foundNode.parent.removeChild(foundNode)) {
+        return foundNode
+      }
+      return null
+    }
+
+    return null    
   }
   
   getRoot(): Node | null {
