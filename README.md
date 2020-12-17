@@ -9,6 +9,10 @@ Basic data structures implemented in TypeScript
 - [ ] Queue
   - [x] Using doubly linked list
 - [ ] Hash table
+- [ ] Tree
+  - [ ] General tree
+  - [ ] Binary tree
+  - [ ] Binary search tree
 
 JavaScript data structures
 
