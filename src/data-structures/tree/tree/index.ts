@@ -4,13 +4,8 @@ import { isDeepStrictEqual } from "util"
 class Tree {
   private root: Node | null = null
   
-  constructor(data: Data) {
+  constructor(data: string | null) {
     this.root = new Node(data)
-  }
-
-  attachChild(parentNode: Node, newNode: Node): boolean {
-    parentNode.children.add(newNode)
-    return true
   }
   
   private traverse(root: Node, data: Data): Node | null | void {
@@ -25,7 +20,7 @@ class Tree {
     }
 
     for (const child of currentNode.children) {     
-      if (isDeepStrictEqual(child.data, data)) {                      
+      if (isDeepStrictEqual(child.data.value, data)) {            
         return child
       }
 
@@ -41,18 +36,6 @@ class Tree {
     }
     
     return this.traverse(this.root, data)
-  }
-  
-  insert(data: Data): boolean {
-    const newNode = new Node(data)
-
-    if (this.root === null) {
-      this.root = newNode
-      return true
-    }
-    
-    this.root.children.add(newNode)
-    return true
   }
   
   getRoot(): Node | null {
