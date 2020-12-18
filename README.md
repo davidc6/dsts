@@ -10,9 +10,11 @@ Basic data structures implemented in TypeScript
   - [x] Using doubly linked list
 - [ ] Hash table
 - [ ] Tree
-  - [ ] General tree
+  - [x] General tree
   - [ ] Binary tree
   - [ ] Binary search tree
+- [ ] Graph
+  - [x] Undirectional
 
 JavaScript data structures
 
@@ -27,3 +29,4 @@ JavaScript data structures
 
 * Nicholas C. Zakas - https://humanwhocodes.com/blog/tag/computer-science/
 * Java (Class LinkedList) - https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
+* 
