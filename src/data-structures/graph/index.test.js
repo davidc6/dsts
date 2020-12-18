@@ -3,7 +3,7 @@ import { describe } from 'mocha'
 import { Graph } from './'
 import { Vertex } from './vertex'
 
-describe('StackLinkedListBased', () => {
+describe('Graph', () => {
   let graph = null
 
   beforeEach(() => {

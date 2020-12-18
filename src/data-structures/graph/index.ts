@@ -1,4 +1,4 @@
-import { isDeepStrictEqual } from "util"
+import { isDeepStrictEqual } from 'util'
 import { Vertex } from './vertex'
 
 class Graph {
@@ -77,22 +77,3 @@ class Graph {
 }
 
 export { Graph }
-
-// const vertOne = new Vertex({ value: 'John' })
-// const vertTwo = new Vertex({ value: 'Simon' })
-// const vertThree = new Vertex({ value: 'Vivienne' })
-
-// // create graph
-// const graph = new Graph()
-// // add vertex
-// graph.addVertex(vertOne)
-// graph.addVertex(vertTwo)
-// graph.addVertex(vertThree)
-// // add edge
-// graph.addEdge(vertOne, vertTwo)
-// graph.addEdge(vertOne, vertThree)
-
-// // remove edge
-// console.log(graph)
-
-// // console.log(inspect(graph, { showHidden: true }))
