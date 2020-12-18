@@ -8,13 +8,16 @@ Basic data structures implemented in TypeScript
   - [x] Using doubly linked list
 - [ ] Queue
   - [x] Using doubly linked list
-- [ ] Hash table
+  - [ ] Priority queue
+- [ ] Hash map / table
+  - [ ] Linked list chaining
 - [ ] Tree
   - [x] General tree
   - [ ] Binary tree
   - [ ] Binary search tree
+  - [ ] Heap
 - [ ] Graph
-  - [x] Undirectional
+  - [x] Undirected (using adjacency list)
 
 JavaScript data structures
 
