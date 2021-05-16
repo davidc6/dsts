@@ -1,9 +1,13 @@
+type Data = {
+  [key: string]: [value: string]
+}
+
 class Node {
-  public data: any
+  public data: Data
   public left: Node | null = null
   public right: Node | null = null
 
-  constructor(data: unknown = null) {
+  constructor(data: Data) {
     this.data = data
   }
 }
