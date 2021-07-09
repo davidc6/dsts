@@ -1,5 +1,7 @@
 # Data Structures in TypeScript
 
+This project is WIP.
+
 Basic data structures implemented in TypeScript
 
 - [ ] Linked list
