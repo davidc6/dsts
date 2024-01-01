@@ -31,4 +31,14 @@ describe('Tree algorithms', () => {
 
         expect(t.maxDepth()).to.equal(3);
     });
+
+    it('Tree diameter', () => {
+        const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+        t.left.left = new TreeNode(4);
+        t.left.right = new TreeNode(5);
+        t.right.left = new TreeNode(6);
+        t.right.right = new TreeNode(7);
+
+        expect(t.diameter()).to.equal(4);
+    });
 });

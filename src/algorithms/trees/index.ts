@@ -72,6 +72,38 @@ export class TreeNode {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    diameter() {
+        let queue = [this];
+        let childQueue = [];
+        let diameter = 0;
+
+        while (queue.length) {
+            if (queue.length > diameter) {
+                diameter = queue.length;
+            }
+
+            let node = queue.shift();
+
+            if (node) {
+
+                if (node.left) {
+                    childQueue.push(node.left);
+                }
+
+                if (node.right) {
+                    childQueue.push(node.right);
+                }
+            }
+
+            if (!queue.length) {
+                queue = childQueue as this[];
+                childQueue = [];
+            }
+        }
+
+        return diameter;
+    }
+
     toArray() {
         return this.bfs();
     }
