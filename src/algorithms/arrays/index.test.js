@@ -16,4 +16,11 @@ describe('Array algorithms', () => {
 
         expect(val).to.deep.equal([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
     });
+
+    it('Flatten deeply nested  array', () => {
+        const arr = [[1, 2, 3], [4, 5, 6], [7, 8, [9, 10, 11], 12], [13, 14, 15]];
+        const val = flattenDeeplyNestedArray(arr, 1);
+
+        expect(val).to.deep.equal([1, 2, 3, 4, 5, 6, 7, 8, [9, 10, 11], 12, 13, 14, 15]);
+    });
 });

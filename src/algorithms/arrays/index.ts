@@ -32,16 +32,28 @@ export const flattenDeeplyNestedArray = (arr: any[], depth: number) => {
 }
 
 const recurringNested = (arr: any[], depth: number, n: any[]) => {
-    for (const val of arr) {
-        if (val instanceof Array) {
-            recurringNested(val, depth - 1, n);
+    if (depth === 0) {
+        if (arr instanceof Array) {
+            for (const a of arr) {
+                n.push(a);
+            }
+
+            return
         } else {
-            n.push(val);
+            n.push(arr);
+            return
         }
     }
 
-    if (depth === 0) {
-        return n;
+    for (const val of arr) {
+        if (val instanceof Array) {
+
+            recurringNested(val, depth - 1, n);
+
+
+        } else {
+            n.push(val);
+        }
     }
 
     return n
