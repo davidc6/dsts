@@ -1,54 +1,21 @@
-import { Tree } from "../../main";
-
 export class TreeNode {
     val: number;
-    // root: TreeNode;
     left: TreeNode | null;
     right: TreeNode | null;
 
     constructor(val: number = 0, left: TreeNode | null = null, right: TreeNode | null = null) {
-
-        // let t = new TreeNode(val, left, right);
         this.val = val;
-
-        // this.root = t;
         this.left = left;
         this.right = right;
     }
 
-    // bst_impl(val: number | null) {
-    //     if (val === null) {
-    //         return;
-    //     }
-
-    bSearch(n: TreeNode | null, a: any[]) {
-        console.log('NODE ', n);
-
-        if (n === null || n.left === null || n.right === null) {
-            return;
-        }
-
-        // a.push(n.right.val);
-
-
-
-        // a.push(n.val);
-        this.bSearch(n.left, a);
-
-        a.push(n.val);
-        this.bSearch(n.right, a);
-
-
-    }
-
-    bfs() {
+    private bfs() {
         let queue: TreeNode[] = [];
 
-        let a = [this.val];
+        let result = [this.val];
 
         queue.push(this.left!);
         queue.push(this.right!);
-
 
         while (queue.length) {
             let n = queue.shift();
@@ -57,26 +24,21 @@ export class TreeNode {
                 break;
             }
 
-            a.push(n.val);
+            result.push(n.val);
 
-
-
+            // There is left TreeNode
             if (n.left) {
                 queue.push(n.left);
             }
 
-
+            // There is right TreeNode
             if (n.right) {
                 queue.push(n.right);
             }
-
         }
 
-        return a;
+        return result;
     }
-
-    // bst() {
-    //     bst(this.left)
 
     toArray() {
         return this.bfs();
@@ -88,7 +50,7 @@ export const invertBinaryTree = (tree: TreeNode | null) => {
         return;
     }
 
-    // swap left and right    
+    // swap left and right nodes
     [tree.left, tree.right] = [tree.right, tree.left];
     invertBinaryTree(tree.left);
     invertBinaryTree(tree.right);

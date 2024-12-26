@@ -11,14 +11,10 @@ describe.only('Tree algorithms', () => {
         t.right.left = new TreeNode(6);
         t.right.right = new TreeNode(7);
 
-        // console.log(t)
+        expect(t.toArray()).to.deep.equal([1, 2, 3, 4, 5, 6, 7]);
 
-        // const val = invertBinaryTree(t);
-
-        console.log(t.bfs());
         invertBinaryTree(t);
-        console.log(t.bfs());
 
-        // expect(val).to.equal(7);
+        expect(t.toArray()).to.deep.equal([1, 3, 2, 7, 6, 5, 4]);
     });
 });
