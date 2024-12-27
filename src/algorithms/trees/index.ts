@@ -9,6 +9,7 @@ export class TreeNode {
         this.right = right;
     }
 
+    // Breadth-first search using a queue
     private bfs() {
         let queue: TreeNode[] = [];
 
@@ -38,6 +39,22 @@ export class TreeNode {
         }
 
         return result;
+    }
+
+    invert() {
+        this._invert(this);
+    }
+
+    private _invert(tree: TreeNode | null) {
+        // base case
+        if (tree === null || tree.left === null || tree.right === null) {
+            return;
+        }
+
+        // swap left and right node
+        [tree.left, tree.right] = [tree.right, tree.left];
+        this._invert(tree.left);
+        this._invert(tree.right);
     }
 
     toArray() {

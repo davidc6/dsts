@@ -13,7 +13,7 @@ describe.only('Tree algorithms', () => {
 
         expect(t.toArray()).to.deep.equal([1, 2, 3, 4, 5, 6, 7]);
 
-        invertBinaryTree(t);
+        t.invert();
 
         expect(t.toArray()).to.deep.equal([1, 3, 2, 7, 6, 5, 4]);
     });
