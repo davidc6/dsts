@@ -18,25 +18,23 @@ export class TreeNode {
         queue.push(this.left!); // this should avoid !
         queue.push(this.right!); // this should avoid !
 
-        let depth = 1;
-
         while (queue.length) {
-            let n = queue.shift();
+            let node = queue.shift();
 
-            if (!n) {
+            if (!node) {
                 break;
             }
 
-            result.push(n.val);
+            result.push(node.val);
 
             // There is left TreeNode
-            if (n.left) {
-                queue.push(n.left);
+            if (node.left) {
+                queue.push(node.left);
             }
 
             // There is right TreeNode
-            if (n.right) {
-                queue.push(n.right);
+            if (node.right) {
+                queue.push(node.right);
             }
         }
 
@@ -60,7 +58,6 @@ export class TreeNode {
     }
 
     maxDepth() {
-
         return this._maxDepth(this);
     }
 
