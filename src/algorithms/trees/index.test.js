@@ -1,8 +1,8 @@
 import { expect } from 'chai'
 import { describe } from 'mocha'
-import { invertBinaryTree, TreeNode } from './'
+import { TreeNode } from './'
 
-describe.only('Tree algorithms', () => {
+describe('Tree algorithms', () => {
     it('Invert binary tree', () => {
         // const arr = [1, 2, 3, 4, 5, 6, 7];
         const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
