@@ -1,9 +1,8 @@
 // Longest consecutive number
-
-export const longestConsecutiveNumber = (a: number[]): number => {
+export const longestConsecutiveNumber = (nums: number[]): number => {
     let longest = 0;
 
-    const numbers = new Set(a);
+    const numbers = new Set(nums);
 
     for (const val of numbers) {
         if (!numbers.has(val - 1)) {
@@ -47,10 +46,7 @@ const recurringNested = (arr: any[], depth: number, n: any[]) => {
 
     for (const val of arr) {
         if (val instanceof Array) {
-
             recurringNested(val, depth - 1, n);
-
-
         } else {
             n.push(val);
         }
