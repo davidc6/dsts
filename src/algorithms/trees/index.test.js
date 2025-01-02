@@ -2,13 +2,21 @@ import { expect } from 'chai'
 import { describe } from 'mocha'
 import { TreeNode } from './'
 
+const buildTree = () => {
+    // level 1
+    const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
+    // level 2
+    t.left.left = new TreeNode(4);
+    t.left.right = new TreeNode(5);
+    t.right.left = new TreeNode(6);
+    t.right.right = new TreeNode(7);
+
+    return t;
+}
+
 describe('Tree algorithms', () => {
     it('Invert a binary tree', () => {
-        const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-        t.left.left = new TreeNode(4);
-        t.left.right = new TreeNode(5);
-        t.right.left = new TreeNode(6);
-        t.right.right = new TreeNode(7);
+        const t = buildTree();
 
         expect(t.toArray()).to.deep.equal([1, 2, 3, 4, 5, 6, 7]);
         t.invert();
@@ -17,12 +25,7 @@ describe('Tree algorithms', () => {
 
     it('Calculate max depth of a tree', () => {
         // level 1
-        const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-        // level 2
-        t.left.left = new TreeNode(4);
-        t.left.right = new TreeNode(5);
-        t.right.left = new TreeNode(6);
-        t.right.right = new TreeNode(7);
+        const t = buildTree();
         // level 3
         t.right.right.left = new TreeNode(8);
 
@@ -30,21 +33,12 @@ describe('Tree algorithms', () => {
     });
 
     it('Calculate diameter of a tree', () => {
-        const t = new TreeNode(1, new TreeNode(2), new TreeNode(3));
-        t.left.left = new TreeNode(4);
-        t.left.right = new TreeNode(5);
-        t.right.left = new TreeNode(6);
-        t.right.right = new TreeNode(7);
-
+        const t = buildTree();
         expect(t.diameter()).to.equal(4);
     });
 
     it('Calculate diameter of a tree by height', () => {
-        const t = new TreeNode(5, new TreeNode(8), new TreeNode(6));
-        t.left.left = new TreeNode(3);
-        t.left.right = new TreeNode(7);
-        t.right.left = new TreeNode(9);
-
+        const t = buildTree();
         expect(t.diameterByHeight()).to.equal(4);
     });
 });
