@@ -72,6 +72,27 @@ export class TreeNode {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    _diameterRecurring(root: TreeNode, res: { val: number }): number {
+        if (root === null) {
+            return 0;
+        }
+
+        let leftHeight = this._diameterRecurring(root.left!, res);
+        let rightHeight = this._diameterRecurring(root.right!, res);
+
+        // compare current diameter with the sum of left and right tree heights
+        res.val = Math.max(res.val, leftHeight + rightHeight);
+
+        // compare left and right heights
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+
+    diameterByHeight() {
+        const result = { val: 0 };
+        this._diameterRecurring(this, result);
+        return result.val;
+    }
+
     diameter() {
         let queue = [this];
         let childQueue = [];

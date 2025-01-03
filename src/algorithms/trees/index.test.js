@@ -38,4 +38,13 @@ describe('Tree algorithms', () => {
 
         expect(t.diameter()).to.equal(4);
     });
+
+    it('Calculate diameter of a tree by height', () => {
+        const t = new TreeNode(5, new TreeNode(8), new TreeNode(6));
+        t.left.left = new TreeNode(3);
+        t.left.right = new TreeNode(7);
+        t.right.left = new TreeNode(9);
+
+        expect(t.diameterByHeight()).to.equal(4);
+    });
 });
