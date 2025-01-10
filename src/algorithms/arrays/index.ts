@@ -54,3 +54,37 @@ const recurringNested = (arr: any[], depth: number, n: any[]) => {
 
     return n
 }
+
+export const topKElements = (nums: number[], k: number) => {
+    const numsCount = new Map();
+    let bucket: any = [];
+    let result = [];
+
+    for (const num of nums) {
+        if (numsCount.has(num)) {
+            numsCount.set(num, numsCount.get(num) + 1);
+        } else {
+            numsCount.set(num, 1);
+        }
+    }
+
+    for (let [val, freq] of numsCount.entries()) {
+        if (!bucket[freq]) {
+            bucket[freq] = new Set().add(val)
+        } else {
+            bucket[freq] = bucket[freq].add(val)
+        }
+    }
+
+    for (let i = bucket.length - 1; i >= 0; i--) {
+        if (bucket[i]) {
+            result.push(...bucket[i])
+        }
+
+        if (result.length === k) {
+            break;
+        }
+    }
+
+    return result;
+}
