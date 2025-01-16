@@ -57,7 +57,7 @@ const recurringNested = (arr: any[], depth: number, n: any[]) => {
 
 export const topKElements = (nums: number[], k: number) => {
     const numsCount = new Map();
-    let bucket: any = [];
+    let bucket: any = []; // for bucket sort
     let result = [];
 
     for (const num of nums) {
@@ -68,6 +68,8 @@ export const topKElements = (nums: number[], k: number) => {
         }
     }
 
+    // bucket the frequency as the key of the bucket
+    // within each key we add the values
     for (let [val, freq] of numsCount.entries()) {
         if (!bucket[freq]) {
             bucket[freq] = new Set().add(val)
@@ -76,6 +78,7 @@ export const topKElements = (nums: number[], k: number) => {
         }
     }
 
+    // add k times
     for (let i = bucket.length - 1; i >= 0; i--) {
         if (bucket[i]) {
             result.push(...bucket[i])
@@ -83,6 +86,51 @@ export const topKElements = (nums: number[], k: number) => {
 
         if (result.length === k) {
             break;
+        }
+    }
+
+    return result;
+}
+
+export const groupAnagrams = (list: string[]) => {
+    const result: any = [];
+    const wordMap: { [key: string]: [{ index: number, map: { [key: string]: number } }] } = {};
+
+    for (const word of list) {
+        const wordLen = word.length;
+        const wordMapping: { [l: string]: number } = {};
+
+        const sortedWord = word.split('').sort().join('');
+        for (const l of sortedWord) {
+            if (wordMapping[l]) {
+                wordMapping[l] += 1;
+            } else {
+                wordMapping[l] = 1;
+            }
+        }
+
+        if (wordMap[`${wordLen}`]) {
+            const wordsList = wordMap[`${wordLen}`];
+            let hasInserted = false;
+
+            for (const wordListItem of wordsList) {
+                if (JSON.stringify(wordListItem.map) == JSON.stringify(wordMapping)) {
+                    result[wordListItem.index].push(word);
+                    wordMap[`${wordLen}`].push({ index: wordListItem.index, map: wordMapping });
+                    hasInserted = true;
+                    break;
+                }
+            }
+
+            if (hasInserted === false) {
+                result.push([word])
+            }
+        } else {
+            result.push([word]);
+            wordMap[`${wordLen}`] = [{
+                index: result.length - 1,
+                map: wordMapping
+            }]
         }
     }
 

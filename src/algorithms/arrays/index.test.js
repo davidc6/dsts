@@ -1,6 +1,11 @@
-import { expect } from 'chai'
+import chai from 'chai'
 import { describe } from 'mocha'
-import { longestConsecutiveNumber, flattenDeeplyNestedArray, topKElements } from './'
+import deepEqualInAnyOrder from 'deep-equal-in-any-order';
+import { longestConsecutiveNumber, flattenDeeplyNestedArray, topKElements, groupAnagrams } from './'
+
+chai.use(deepEqualInAnyOrder);
+
+const { expect } = chai;
 
 describe('Array algorithms', () => {
     it('Longest consecutive sequence', () => {
@@ -30,5 +35,15 @@ describe('Array algorithms', () => {
 
         const result = topKElements(arr, k);
         expect(result).to.deep.equal([1, 5]);
+    });
+
+    it('Group anagrams', () => {
+        const input = ["act", "pots", "tops", "cat", "stop", "hat"];
+        const result = groupAnagrams(input);
+
+        console.log(result);
+
+        expect(result).to.deep.equalInAnyOrder([["hat"], ["act", "cat"], ["stop", "pots", "tops"]]);
+        console.log(result);
     });
 });
