@@ -1,11 +1,6 @@
-import chai from 'chai'
 import { describe } from 'mocha'
-import deepEqualInAnyOrder from 'deep-equal-in-any-order';
+import { expect } from 'chai'
 import { SkipList } from './'
-
-chai.use(deepEqualInAnyOrder);
-
-const { expect } = chai;
 
 describe('List algorithms', () => {
     it('Skip list size works', () => {
