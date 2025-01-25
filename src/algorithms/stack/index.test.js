@@ -70,6 +70,44 @@ describe.only('Stack algorithms', () => {
 
             expect(actual).to.deep.equal(expected);
         });
+
+        it('works with a different combination', () => {
+            const expected = [null, null, null, null, 0, null, 0, null, 2, 0];
+            const actual = [];
+
+            const minStack = new MinStack();
+            actual.push(null);
+            actual.push(minStack.push(13));
+            actual.push(minStack.push(20));
+            actual.push(minStack.push(7));
+            actual.push(minStack.push(53));
+            actual.push(minStack.push(8));
+
+            expect(minStack.getMin()).to.equal(7);
+            actual.push(minStack.push(0));
+            expect(minStack.getMin()).to.equal(0); // return 0
+
+            actual.push(minStack.pop());
+            expect(minStack.top()).to.equal(53);
+            expect(minStack.getMin()).to.equal(7);
+
+            minStack.pop();
+            minStack.pop();
+
+            expect(minStack.getMin()).to.equal(7);
+            expect(minStack.top()).to.equal(20);
+
+            minStack.pop();
+            minStack.pop();
+
+            expect(minStack.getMin()).to.equal(13);
+            expect(minStack.top()).to.equal(13);
+
+            minStack.pop();
+
+            expect(minStack.getMin()).to.be.null;
+            expect(minStack.top()).to.be.null;
+        });
     });
 });
 
