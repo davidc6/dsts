@@ -29,3 +29,83 @@ export const isValidParens = (input: string[]) => {
 
     return true
 }
+
+export class MinStack {
+    stack: [number, number, number][];
+
+    constructor() {
+        // [val, min_index, max_index]
+        this.stack = [];
+    }
+
+    push(val: number) {
+        const currentVal: [number, number, number] = [val, 0, 0];
+
+        if (this.stack.length) {
+            const [, lastMinIndex, lastMaxIndex] = this.stack[this.stack.length - 1];
+
+            // min
+            if (this.stack[lastMinIndex][0] > val) {
+                currentVal[1] = this.stack.length;
+            } else {
+                currentVal[1] = lastMinIndex;
+            }
+
+            // max
+            if (this.stack[lastMaxIndex][0] > val) {
+                currentVal[2] = lastMaxIndex;
+            } else {
+                currentVal[2] = this.stack.length;
+            }
+        }
+
+        this.stack.push(currentVal);
+
+        return null
+    }
+
+    pop() {
+        if (!this.stack.length) {
+            return null;
+        }
+
+        const l = this.stack.pop();
+
+        if (l && l[0]) {
+            return l[0];
+        }
+
+        return null;
+    }
+
+    // max
+    top() {
+        if (!this.stack.length) {
+            return null;
+        }
+
+        const lastElement = this.stack[this.stack.length - 1];
+
+        if (lastElement && lastElement[2] !== null) {
+            return this.stack[lastElement[2]][0]
+        }
+
+        return null;
+    }
+
+    // min
+    getMin() {
+        if (!this.stack.length) {
+            return null;
+        }
+
+        const lastElement = this.stack[this.stack.length - 1];
+
+        if (lastElement && lastElement[1] !== null) {
+            return this.stack[lastElement[1]][0]
+        }
+
+        return null;
+    }
+
+}
