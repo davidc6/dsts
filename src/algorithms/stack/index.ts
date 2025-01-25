@@ -71,9 +71,10 @@ export class MinStack {
 
         const l = this.stack.pop();
 
-        if (l && l[0]) {
-            return l[0];
-        }
+        // return if necessary
+        // if (l && l[0] !== null) {
+        //     return l[0];
+        // }
 
         return null;
     }
@@ -107,5 +108,4 @@ export class MinStack {
 
         return null;
     }
-
 }
