@@ -116,6 +116,21 @@ describe.only('Stack algorithms', () => {
 
             expect(output).to.equal(5);
         });
+
+        it('works using long input', () => {
+            const input = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"];
+            const output = evaluateReversePolishNotation(input);
+
+            expect(output).to.equal(22);
+        });
+
+
+        it('works using a different input', () => {
+            const input = ["4", "13", "5", "/", "+"];
+            const output = evaluateReversePolishNotation(input);
+
+            expect(output).to.equal(6);
+        });
     });
 });
 

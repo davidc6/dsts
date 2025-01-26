@@ -110,46 +110,47 @@ export class MinStack {
     }
 }
 
-// Only works for Input: tokens = ["1","2","+","3","*","4","-"]
-// To revisit
+// Leetcode 150 - https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
 export const evaluateReversePolishNotation = (input: string[]) => {
-    const stack: string[] = [];
-
+    const stack: number[] = [];
     const tokens = ['+', '-', '*', '/'];
-    let expressionValues: number[] = [];
 
     let position = 0;
 
     while (position < input.length) {
         const char = input[position];
-        const first = expressionValues[0];
-        const second = expressionValues[1];
 
-        if (tokens.includes(char)) {
+        if (!tokens.includes(char)) {
+            stack.push(Number(char));
+        } else {
+            const second = stack.pop(); // since popping is the reverse of the original order
+            const first = stack.pop();
+
             let result = 0;
 
-            switch (char) {
-                case tokens[0]:
-                    result = first + second;
-                    break;
-                case tokens[1]:
-                    result = first - second;
-                    break;
-                case tokens[2]:
-                    result = first * second;
-                    break;
-                case tokens[3]:
-                    result = first / second;
-                    break;
+            if (first !== undefined && second !== undefined) {
+                switch (char) {
+                    case tokens[0]:
+                        result = first + second;
+                        break;
+                    case tokens[1]:
+                        result = first - second;
+                        break;
+                    case tokens[2]:
+                        result = Math.floor(first * second);
+                        break;
+                    case tokens[3]:
+                        const val = first / second;
+                        result = val < 0 ? Math.ceil(val) : Math.floor(val)
+                        break;
+                }
             }
 
-            expressionValues = [result];
-        } else {
-            expressionValues.push(Number(char));
+            stack.push(result)
         }
 
         position += 1;
     }
 
-    return expressionValues[0];
+    return stack[0];
 }
