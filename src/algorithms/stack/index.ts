@@ -109,3 +109,47 @@ export class MinStack {
         return null;
     }
 }
+
+// Only works for Input: tokens = ["1","2","+","3","*","4","-"]
+// To revisit
+export const evaluateReversePolishNotation = (input: string[]) => {
+    const stack: string[] = [];
+
+    const tokens = ['+', '-', '*', '/'];
+    let expressionValues: number[] = [];
+
+    let position = 0;
+
+    while (position < input.length) {
+        const char = input[position];
+        const first = expressionValues[0];
+        const second = expressionValues[1];
+
+        if (tokens.includes(char)) {
+            let result = 0;
+
+            switch (char) {
+                case tokens[0]:
+                    result = first + second;
+                    break;
+                case tokens[1]:
+                    result = first - second;
+                    break;
+                case tokens[2]:
+                    result = first * second;
+                    break;
+                case tokens[3]:
+                    result = first / second;
+                    break;
+            }
+
+            expressionValues = [result];
+        } else {
+            expressionValues.push(Number(char));
+        }
+
+        position += 1;
+    }
+
+    return expressionValues[0];
+}

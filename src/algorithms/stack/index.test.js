@@ -1,7 +1,6 @@
-
 import { describe } from 'mocha'
 import { expect } from 'chai'
-import { isValidParens, MinStack } from './'
+import { evaluateReversePolishNotation, isValidParens, MinStack } from './'
 
 describe.only('Stack algorithms', () => {
     describe('isValidParens()', () => {
@@ -107,6 +106,15 @@ describe.only('Stack algorithms', () => {
 
             expect(minStack.getMin()).to.be.null;
             expect(minStack.top()).to.be.null;
+        });
+    });
+
+    describe('Reverse Polish notation', () => {
+        it('works', () => {
+            const input = ["1", "2", "+", "3", "*", "4", "-"]
+            const output = evaluateReversePolishNotation(input);
+
+            expect(output).to.equal(5);
         });
     });
 });
