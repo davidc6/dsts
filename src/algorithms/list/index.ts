@@ -14,6 +14,8 @@ export class SkipListNode {
     }
 }
 
+// https://github.com/microsoft/vscode/blob/main/src/vs/base/common/skipList.ts
+// https://web.eecs.utk.edu/~bvanderz/cs302/notes/skip-lists.html
 export class SkipList {
     private head: SkipListNode; // head node
     private maximumLevel: number; // maximum level
