@@ -3,7 +3,7 @@ import { describe } from 'mocha'
 import { expect } from 'chai'
 import { workWithArray } from '.'
 
-describe.only('040325 work', () => {
+describe('040325 work', () => {
     it('Array - fizzbuzz', () => {
         let prev = 0;
         let arr = new Array(100).fill(1).map((val, index) => {
